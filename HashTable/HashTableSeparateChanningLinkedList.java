@@ -204,5 +204,42 @@ public class HashTableSeparateChanningLinkedList<K,V> implements Iterable<K>{
         sb.append("}");
         return sb.toString();
     }
+    public static void main(String arg[]){
+        System.out.println("Testing working of Hash Table");
+        HashTableSeparateChanningLinkedList pp= new HashTableSeparateChanningLinkedList(12);
+        Entry e=new Entry(0,45);
+        System.out.println(pp.size());
+        System.out.println(pp.isEmpty());
+        pp.clear();
+        System.out.println(pp.containsKey(4));
+        System.out.println(pp.hashKey(4));
+        pp.put(4,45);
+        pp.put("324",546);
+        pp.put("@#",54);
+        pp.put(12,45);
+        pp.put('a',-456);
+        pp.put(-1,12);
+        pp.add("ASd",456);
+        pp.insert(-200,'a');
+        pp.add(15,"fasdasd");
+        System.out.println(pp.get(15));
+        System.out.println(pp.get(-200));
+        System.out.println("Size is "+pp.size());
+        pp.remove(-1);
+        int arr[]={45,544,45,45};
+        System.out.println(pp.toString());
+       Iterator it= pp.iterator();
+       while(it.hasNext()){
+        System.out.print(" "+it.next());
+       }System.out.println();
+       System.out.println(pp.hashKey(4));
+       System.out.println(e.equals(e));
+      System.out.println( e.toString());
+
+
+        
+        
+    }
+
                
 }
