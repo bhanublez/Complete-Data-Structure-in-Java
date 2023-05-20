@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 class Entry<K,V>{
     int hash;
     K key;
@@ -22,7 +23,6 @@ public String toString(){
 public class HashTableSeparateChanningLinkedList<K,V> implements Iterable<K>{
     private static final int D_capacity=3;
     private static final double D_load_factor=0.75;
-    
     private double maxloadFactor;
     private int capacity, threshold,size=0;
     private LinkedList<Entry<K,V>> [] table;

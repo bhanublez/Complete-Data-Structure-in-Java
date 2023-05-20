@@ -1,14 +1,14 @@
 public class UnionFind{
-    private size;
+    private int size;
     private int[] sz;
     private int[] id;
-    private int numCompents;
+    private int numComponents;
     public UnionFind(int size){
         if(size<=0){
             throw new IllegalArgumentException("Size <= 0is not allowed");
         }
-        this.size=numCompents=size;
-        arr=new int[size];
+        this.size=numComponents=size;
+        sz=new int[size];
         id= new int[size];
         for(int i=0;i<size;i++){
             id[i]=i;//Linked to itself(self loop)

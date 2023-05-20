@@ -60,16 +60,13 @@ public class Dijkstras{
         return path;
       }
       public double dijkstra(int start, int end) {
-        // Maintain an array of the minimum distance to each node
         dist = new double[n];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
         dist[start] = 0;
-    
-        // Keep a priority queue of the next most promising node to visit.
+
         PriorityQueue<Node> pq = new PriorityQueue<>(2 * n, comparator);
         pq.offer(new Node(start, 0));
     
-        // Array used to track which nodes have already been visited.
         boolean[] visited = new boolean[n];
         prev = new Integer[n];
     
@@ -77,19 +74,14 @@ public class Dijkstras{
           Node node = pq.poll();
           visited[node.id] = true;
     
-          // We already found a better path before we got to
-          // processing this node so we can ignore it.
           if (dist[node.id] < node.value) continue;
     
           List<Edge> edges = graph.get(node.id);
           for (int i = 0; i < edges.size(); i++) {
             Edge edge = edges.get(i);
     
-            // You cannot get a shorter path by revisiting
-            // a node you have already visited before.
             if (visited[edge.to]) continue;
     
-            // Relax edge by updating minimum cost if applicable.
             double newDist = dist[edge.from] + edge.cost;
             if (newDist < dist[edge.to]) {
               prev[edge.to] = edge.from;

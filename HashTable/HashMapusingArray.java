@@ -22,7 +22,7 @@ public class HashMapusingArray<K,V>{
     private static final double D_load_factor=0.75;
     private int size=0,threshold,capacity;
     private double maxloadfactor;
-    private ArrayList<LinkedList<Entry<K,V>>> []table;
+    private ArrayList<List<Entry<K,V>>> []table;
     public HashMapusingArray(){
         this(D_capacity,D_load_factor);
     }
@@ -61,7 +61,7 @@ public class HashMapusingArray<K,V>{
     }
     private Entry<K, V> bucketSeekEntry(int bucketIndex,K key){
         if(key==null) return null;
-        LinkedList<Entry<K,V>> bucket=table[bucketIndex];
+        List<Entry<K,V>> bucket=table[bucketIndex];
         if(bucket==null) return null;
         for(Entry<K,V> entry:bucket)
         if(entry.key.equals(key))
