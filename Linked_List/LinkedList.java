@@ -1,3 +1,5 @@
+import LinkedListQuestions.reverseLinkedList;
+
 public class LinkedList{
     public static class Node{
         int data;
@@ -21,6 +23,41 @@ public class LinkedList{
         }       
         newNode.next=head;//linked nodes
         head=newNode;//head position changed
+    }
+
+    //Reversing linked List iterative manner
+    public synchronized void reverseLinkedList(){
+        Node curr,prev=null,next=null;
+        curr=head;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
+
+    //Reversing Linked List recursive manner
+    public void reverseLinked_List(Node curr, Node prev){
+        if(curr.next==null){
+            head=curr;
+            curr.next=prev;
+            return;
+        }
+        Node next=curr.next;
+        curr.next=prev;
+        reverseLinked_List(next, curr);
+    }
+
+    //Finding middle term using two pointer approach
+    public static int middleTerm(){
+        Node fast=head,slow=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow.data;
     }
     public synchronized void insertAtLast(int data){
         Node newNode= new Node(data);
@@ -163,7 +200,19 @@ public class LinkedList{
         ll.deletionAtMiddle(1);
         ll.Display();
         ll.SearchList(1);
-
-        
+        ll.insertAtLast(93);
+        ll.insertAtLast(13);
+        ll.insertAtLast(83);
+        ll.insertAtLast(8);
+        ll.insertAtBegin(999);
+        System.out.println("Current Linked list: ");
+        ll.Display();
+        System.out.println("After Reversing linked list: ");
+        ll.reverseLinkedList();
+        ll.Display();
+        System.out.println("Reversing Linked List using Recursive Approach: ");
+        ll.reverseLinked_List(LinkedList.head,null);
+        ll.Display();
+        System.out.println("Middle term is: "+LinkedList.middleTerm());
     }
 }
